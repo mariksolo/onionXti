@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  form(name="create-new-page", method="post")
+        span.label Content
+        div.input
+            textarea(type="text", name="content")
+        div.actions
+            input(type="submit", value="create")
