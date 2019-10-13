@@ -1,29 +1,32 @@
 var mongo = require("mongodb").MongoClient;
 
-var url = 'mongodb://localhost/mainDB';
+var url = "mongodb://localhost/mainDB";
 
-function addPage(content) {
-    mongo.connect(url, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true
-      }, (err, client) => {
-        if (err) {
-          console.error(err)
-          return      
-        }
-        const db = client.db('pagedb')
-        const collection = db.collection('pages');
-    
-        collection.insertOne({
-          pageId: 1,
-          content: content
-        })
+function addPage(content, urlString) {
+  mongo.connect(
+    url,
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true
+    },
+    (err, client) => {
+      if (err) {
+        console.error(err);
+        return;
+      }
+      const db = client.db("pagedb");
+      const collection = db.collection("pages");
 
-        collection.find().toArray((err, items) => {
-            console.log(items)
-          })
-    
-    })
+      collection.insertOne({
+        url: urlString,
+        content: content
+      });
+
+      collection.find().toArray((err, items) => {
+        console.log(items);
+      });
+    }
+  );
 }
 
 module.exports = addPage;
