@@ -7,7 +7,8 @@ A version of txti.es as a hidden service.
 1. Clone the repository.
 2. Install a mongo database.
 3. Install the dependencies with `npm install`.
-4. Start the server with `npm start`.
+4. Start the mongo server with `sudo mongod`.
+5. Start the server with `npm start`.
 
 ## Hosting
 onionXti is currently hosted using an AWS EC2 instance and is configured as a hidden service.
