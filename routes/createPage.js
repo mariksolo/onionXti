@@ -7,8 +7,8 @@ var createNewUserRoute = require("./createNewUserRoute");
 router.post("/", function(req, res, next) {
   let randomUrl = randomstring.generate(4);
   addPage(req.body.content, randomUrl);
-  // res.render('afterCreate', { title: 'onionXti' });
-  res.send(randomUrl);
+  res.render("afterCreate", { title: "onionXti", url: randomUrl });
+
   createNewUserRoute(req.body.content, randomUrl, router);
 });
 
